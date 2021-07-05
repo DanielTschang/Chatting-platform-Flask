@@ -63,29 +63,21 @@
   </div>
 </nav>
 
-<main class="container">
-  <div class="bg-light p-5 rounded">
-    <h1>Let's Start Chatting</h1>
-    <p class="lead"></p>
-    <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+{% block messages %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages%}
+            <div class="alert alert-secondary" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>>
+        {% endif %}
+    {% endwith %}
+{% endblock%}
 
-  </div>
-    {% block messages %}
-        {% with messages = get_flashed_messages() %}
-            {% if messages%}
-                <div class="alert alert-secondary" role="alert">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>>
-            {% endif %}
-        {% endwith %}
-    {% endblock%}
+{% block content %}
+{% endblock %}
 
-    {% block content %}
-    {% endblock %}
-
-</main>
 
 
     <script src="../static/base.js"></script>
